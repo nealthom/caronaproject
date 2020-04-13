@@ -7,7 +7,8 @@ const Container = styled.div`
   background: green;
   margin: 2em;
   padding: 2em;
-  width: 20%;
+  width: 80%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,7 +25,10 @@ const Card = props => {
   return (
     <Container>
       <h1>{title}</h1>
-      <p css={center}>{body}</p>
+      <div>
+        <p css={center}>{body}</p>
+      </div>
+
       <button>View Info</button>
     </Container>
   )

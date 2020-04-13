@@ -4,7 +4,7 @@ import styled from "@emotion/styled"
 
 const Wrapper = styled("div")`
   border: 2px solid purple;
-  padding: 10px;
+  padding: 0;
 `
 
 export default ({ children }) => (
@@ -14,9 +14,14 @@ export default ({ children }) => (
         div {
           background: pink;
           color: white;
+          padding: 0%;
         }
         section {
-          height: 90vh;
+          height: 100vh;
+          padding: 0%;
+        }
+        * {
+          box-sizing: border-box;
         }
       `}
     />

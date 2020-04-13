@@ -14,7 +14,10 @@ const IndexPage = () => (
       <Link to="#description">view description</Link>
     </section>
     <section id="description">
-      <Link to="/">back to overview</Link>
+      <CardList />
+    </section>
+    <section id="landing Pages">
+      <h1>Landing Pages</h1>
       <CardList />
     </section>
   </Layout>
