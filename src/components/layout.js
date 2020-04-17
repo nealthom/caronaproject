@@ -23,6 +23,7 @@ export default ({ children }) => (
         * {
           box-sizing: border-box;
           margin: 0;
+          font-family: "Raleway", sans-serif;
         }
         a {
           text-decoration: none;
@@ -35,8 +36,7 @@ export default ({ children }) => (
         }
       `}
     />
-    <Header />
+
     {children}
-    <Footer />
   </Wrapper>
 )

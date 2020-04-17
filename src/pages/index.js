@@ -16,19 +16,40 @@ const Button = styled(GatsbyLink)`
     background: #088c60;
   }
 `
+const IntroContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const IntroSection = styled.div``
 
 const IndexPage = () => (
   <Layout>
-    <section>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
+    <IntroContainer>
+      <h1 css={{ "font-size": "4em" }}>A UI Collection</h1>
+      <p>
+        Build something great, with these crafted pages and modular components.
+      </p>
+
       <Button to="#demos">View Demos</Button>
-      <h1>Getting Started!</h1>
-      <p>I have done a little bit of animation on my landing page grid</p>
-      <p>Next up: work on first landing page to link to</p>
-    </section>
-    <section id="demos">
-      <h1>Demos</h1>
+    </IntroContainer>
+
+    <section
+      id="demos"
+      css={{
+        background: "white",
+        padding: "2em",
+      }}
+    >
+      <h1
+        css={{
+          color: "black",
+        }}
+      >
+        Landing Pages
+      </h1>
       <CardList />
     </section>
   </Layout>

@@ -27,18 +27,21 @@ const cards = [
 const CardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, auto);
-
   justify-content: center;
   align-content: center;
   justify-items: center;
   height: 100%;
   padding: 0;
   margin: 0;
+  background: white;
 `
 
 const cardList = () => (
-  <div>
-    <Link to="/">back to overview</Link>
+  <div
+    css={{
+      background: "white",
+    }}
+  >
     <CardGrid>
       {cards.map(card => (
         <Card info={card} />
