@@ -1,10 +1,12 @@
 import React from "react"
+import { Link as GatsbyLink } from "gatsby"
 import styled from "@emotion/styled"
 import { css, keyframes } from "@emotion/core"
 
-const Container = styled.div`
+const Container = styled(GatsbyLink)`
   border: solid black 2px;
-  background: green;
+  border-radius: 10px;
+  background: #083aa0;
   margin: 2em;
   padding: 2em;
   width: 80%;
@@ -13,6 +15,12 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  color: white;
+
+  &:visited {
+    color: white;
+  }
 `
 
 const bounce = keyframes`
@@ -32,7 +40,7 @@ const center = css`
 
 const Card = props => {
   const { title, body } = props.info
-  console.log(props)
+
   return (
     <Container
       css={{
@@ -41,6 +49,7 @@ const Card = props => {
           box-shadow: -5px 5px 5px 5px grey;
         `,
       }}
+      to="/landing-1"
     >
       <h1>{title}</h1>
       <div>

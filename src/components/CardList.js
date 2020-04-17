@@ -31,7 +31,6 @@ const CardGrid = styled.div`
   justify-content: center;
   align-content: center;
   justify-items: center;
-  border: solid blue 3px;
   height: 100%;
   padding: 0;
   margin: 0;

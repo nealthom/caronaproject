@@ -2,17 +2,17 @@ import React from "react"
 import { Global, css } from "@emotion/core"
 import styled from "@emotion/styled"
 
-const Wrapper = styled("div")`
-  border: 2px solid purple;
-  padding: 0;
-`
+import Header from "./Header"
+import Footer from "./Footer"
+
+const Wrapper = styled("div")``
 
 export default ({ children }) => (
   <Wrapper>
     <Global
       styles={css`
         div {
-          background: pink;
+          background: #0887a0;
           color: white;
           padding: 0%;
         }
@@ -22,9 +22,21 @@ export default ({ children }) => (
         }
         * {
           box-sizing: border-box;
+          margin: 0;
+        }
+        a {
+          text-decoration: none;
+        }
+        a:visited {
+          color: white;
+        }
+        a:hover {
+          color: white;
         }
       `}
     />
+    <Header />
     {children}
+    <Footer />
   </Wrapper>
 )
