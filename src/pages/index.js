@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link as GatsbyLink } from "gatsby"
 
 import styled from "@emotion/styled"
@@ -23,36 +23,59 @@ const IntroContainer = styled.section`
   justify-content: center;
 `
 
-const IntroSection = styled.div``
+const IndexPage = () => {
+  const phrases = ["strong", "bold", "super", "awesome", "radical"]
+  const [phrase, setPhrase] = useState("")
+  const [index, setIndex] = useState(0)
+  useEffect(() => {
+    let rotationInterval = setInterval(() => {
+      if (index >= phrases.length) {
+        setPhrase("")
+        setIndex(0)
+      } else {
+        phrases[index].split("").forEach(char => {
+          setPhrase(phrase + char)
+        })
 
-const IndexPage = () => (
-  <Layout>
-    <IntroContainer>
-      <h1 css={{ "font-size": "4em" }}>A UI Collection</h1>
-      <p>
-        Build something great, with these crafted pages and modular components.
-      </p>
+        setIndex(index + 1)
+      }
+    }, 1000)
 
-      <Button to="#demos">View Demos</Button>
-    </IntroContainer>
+    return () => {
+      clearInterval(rotationInterval)
+    }
+  }, [phrase, index])
 
-    <section
-      id="demos"
-      css={{
-        background: "white",
-        padding: "2em",
-      }}
-    >
-      <h1
+  return (
+    <Layout>
+      <IntroContainer>
+        <h1 css={{ "font-size": "4em" }}>A UI Collection. with {phrase}</h1>
+        <p>
+          Build something great, with these crafted pages and modular
+          components.
+        </p>
+
+        <Button to="#demos">View Demos</Button>
+      </IntroContainer>
+
+      <section
+        id="demos"
         css={{
-          color: "black",
+          background: "white",
+          padding: "2em",
         }}
       >
-        Landing Pages
-      </h1>
-      <CardList />
-    </section>
-  </Layout>
-)
+        <h1
+          css={{
+            color: "black",
+          }}
+        >
+          Landing Pages
+        </h1>
+        <CardList />
+      </section>
+    </Layout>
+  )
+}
 
 export default IndexPage

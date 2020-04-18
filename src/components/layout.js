@@ -2,9 +2,6 @@ import React from "react"
 import { Global, css } from "@emotion/core"
 import styled from "@emotion/styled"
 
-import Header from "./Header"
-import Footer from "./Footer"
-
 const Wrapper = styled("div")``
 
 export default ({ children }) => (
