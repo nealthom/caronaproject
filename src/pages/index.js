@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link as GatsbyLink } from "gatsby"
+import useInterval from "../hooks/useInterval"
 
 import styled from "@emotion/styled"
 
@@ -23,33 +24,72 @@ const IntroContainer = styled.section`
   justify-content: center;
 `
 
+const Fath1 = styled.h1`
+  font-size: 4em;
+`
+
 const IndexPage = () => {
-  const phrases = ["strong", "bold", "super", "awesome", "radical"]
-  const [phrase, setPhrase] = useState("")
+  const phrases = [
+    "s",
+    "t",
+    "r",
+    "o",
+    "n",
+    "g",
+    ",",
+    "r",
+    "a",
+    "d",
+    "i",
+    "c",
+    "a",
+    "l",
+    ",",
+    "a",
+    "w",
+    "e",
+    "s",
+    "o",
+    "m",
+    "e",
+    ",",
+  ]
+  const [phrase, setPhrase] = useState("|")
   const [index, setIndex] = useState(0)
-  useEffect(() => {
-    let rotationInterval = setInterval(() => {
-      if (index >= phrases.length) {
-        setPhrase("")
+  const [end, setEnd] = useState({ end: false, process: false, restart: false })
+  useInterval(() => {
+    const slicedPhrase = phrase.slice(0, phrase.length - 1)
+    if (!end.end) {
+      setPhrase(slicedPhrase + phrases[index] + "|")
+      setIndex(index + 1)
+      if (index === phrases.length - 1) {
         setIndex(0)
-      } else {
-        phrases[index].split("").forEach(char => {
-          setPhrase(phrase + char)
-        })
-
-        setIndex(index + 1)
       }
-    }, 1000)
-
-    return () => {
-      clearInterval(rotationInterval)
+      if (phrases[index] === ",") {
+        setPhrase(slicedPhrase)
+        setEnd({ ...end, end: true })
+      }
+    } else {
+      if (!end.process) {
+        setPhrase(phrase + "|")
+        setEnd({ ...end, process: true })
+      } else {
+        if (!end.restart) {
+          setPhrase("|")
+          setEnd({ ...end, restart: true })
+        } else {
+          setPhrase("|")
+          setEnd({ end: false, process: false, restart: false })
+        }
+      }
     }
-  }, [phrase, index])
+  }, 200)
 
   return (
     <Layout>
       <IntroContainer>
-        <h1 css={{ "font-size": "4em" }}>A UI Collection. with {phrase}</h1>
+        <Fath1>A UI Collection.</Fath1>
+        <Fath1>{phrase.toUpperCase()}</Fath1>
         <p>
           Build something great, with these crafted pages and modular
           components.
